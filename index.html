@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NQK File Free</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(-45deg,#dff6ff,#eef8ff,#cfefff,#eaf7ff);
+background-size:400% 400%;
+animation:bg 15s ease infinite;
+min-height:100vh;
+overflow-x:hidden;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+.header{
+position:sticky;
+top:0;
+z-index:999;
+padding:20px;
+background:rgba(255,255,255,.35);
+backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(255,255,255,.5);
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.logo{
+text-align:center;
+font-size:52px;
+font-weight:900;
+letter-spacing:4px;
+text-transform:uppercase;
+background:
+linear-gradient(
+90deg,
+#00e5ff,
+#00a2ff,
+#7c4dff,
+#ff00ea
+);
+background-size:300% 300%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:rgbText 6s linear infinite;
+text-shadow:
+0 0 10px rgba(0,229,255,.8),
+0 0 20px rgba(0,229,255,.6),
+0 0 40px rgba(124,77,255,.4);
+}
+@keyframes rgbText{
+0%{
+background-position:0% 50%;
+}
+50%{
+background-position:100% 50%;
+}
+100%{
+background-position:0% 50%;
+}
+}
+.sub{
+margin-top:8px;
+
+text-align:center;
+
+font-size:15px;
+font-weight:600;
+
+color:#ffffff;
+
+text-shadow:
+0 0 10px rgba(0,170,255,.8);
+
+letter-spacing:1px;
+}
+
+.search{
+max-width:500px;
+margin:20px auto;
+padding:0 15px;
+}
+
+.search input{
+width:100%;
+padding:14px 18px;
+border:none;
+outline:none;
+border-radius:50px;
+font-size:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+padding:25px;
+}
+
+.card{
+background:rgba(255,255,255,.55);
+backdrop-filter:blur(16px);
+border-radius:25px;
+padding:20px;
+text-align:center;
+position:relative;
+overflow:hidden;
+transition:.3s;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 35px rgba(0,170,255,.2);
+}
+
+.badge{
+position:absolute;
+top:15px;
+right:15px;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
+color:white;
+}
+
+.hot{
+background:#ff3d3d;
+}
+
+.new{
+background:#00b894;
+}
+
+.icon{
+width:100%;
+aspect-ratio:16/9;
+border-radius:18px;
+overflow:hidden;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.icon img{
+width:100%;
+height:100%;
+object-fit:cover;
+object-position:center;
+display:block;
+transition:.5s;
+}
+
+.card:hover .icon img{
+transform:scale(1.08);
+}
+
+.card h3{
+margin-top:15px;
+color:#0f4c81;
+font-size:22px;
+}
+
+.desc{
+margin-top:8px;
+font-size:14px;
+color:#666;
+}
+
+.btn{
+width:100%;
+margin-top:15px;
+padding:14px;
+
+border:none;
+border-radius:50px;
+
+font-size:15px;
+font-weight:700;
+color:white;
+
+cursor:pointer;
+
+background:
+linear-gradient(
+90deg,
+#00e5ff,
+#00a2ff,
+#7c4dff,
+#ff00ea
+);
+
+background-size:300% 300%;
+animation:rgbMove 4s linear infinite;
+
+box-shadow:
+0 0 15px rgba(0,170,255,.35);
+
+transition:.25s;
+}
+
+.btn:hover{
+transform:
+translateY(-3px)
+scale(1.03);
+}
+
+.btn:active{
+transform:scale(.92);
+}
+
+.footer{
+text-align:center;
+padding:25px;
+color:#666;
+font-size:14px;
+}
+
+.particles{
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:-1;
+}
+
+.particles::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background-image:
+radial-gradient(circle,#ffffff 2px,transparent 2px);
+background-size:80px 80px;
+opacity:.4;
+animation:move 20s linear infinite;
+}
+
+@keyframes move{
+from{
+transform:translateY(0);
+}
+to{
+transform:translateY(-200px);
+}
+}
+
+@media(max-width:768px){
+
+.logo{
+font-size:30px;
+}
+
+.cards{
+padding:15px;
+}
+
+}
+
+.social-buttons{
+display:flex;
+justify-content:center;
+gap:15px;
+margin:15px 20px 25px;
+flex-wrap:wrap;
+}
+
+.social-btn{
+position:relative;
+overflow:hidden;
+
+padding:14px 28px;
+border:none;
+border-radius:50px;
+
+font-size:15px;
+font-weight:700;
+color:white;
+
+cursor:pointer;
+
+background:linear-gradient(
+90deg,
+#00e5ff,
+#00a2ff,
+#7c4dff,
+#ff00ea
+);
+
+background-size:300% 300%;
+animation:rgbMove 5s linear infinite;
+
+box-shadow:
+0 0 15px rgba(0,170,255,.4),
+0 0 30px rgba(124,77,255,.25);
+
+transition:.25s;
+}
+
+.social-btn:hover{
+transform:translateY(-4px) scale(1.05);
+}
+
+.social-btn:active{
+transform:scale(.92);
+}
+
+.social-btn::before{
+content:'';
+position:absolute;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+background:
+linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,.4),
+transparent
+);
+transform:rotate(25deg);
+animation:shine 3s infinite;
+}
+
+@keyframes rgbMove{
+0%{
+background-position:0% 50%;
+}
+50%{
+background-position:100% 50%;
+}
+100%{
+background-position:0% 50%;
+}
+}
+
+@keyframes shine{
+0%{
+left:-120%;
+}
+100%{
+left:120%;
+}
+}
+
+.discord{
+background:
+linear-gradient(
+90deg,
+#5865F2,
+#7289DA,
+#5865F2
+);
+}
+
+.zalo{
+background:
+linear-gradient(
+90deg,
+#0068ff,
+#00a2ff,
+#0068ff
+);
+}
+
+.ob53{
+background:
+linear-gradient(
+90deg,
+#ff12ff,
+#feca3f,
+#12ffff
+);
+}
+
+.ob54{
+background:
+linear-gradient(
+90deg,
+#ff12ff,
+#feca3f,
+#12ffff
+);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="particles"></div>
+
+<div class="header">
+<div class="logo">𝐍𝐐𝐊 𝐅𝐈𝐋𝐄 𝐅𝐑𝐄𝐄</div>
+<div class="sub">ᴋʜᴏ ᴍᴏᴅ + ᴀɪᴍ xɪ̣ɴ ᴀɴᴛɪʙᴀɴ</div>
+</div>
+<div class="search">
+<input type="text" id="search" placeholder="🔍 Tìm kiếm ...">
+</div>
+
+<div class="social-buttons">
+
+<button
+class="social-btn discord"
+onclick="openDiscord()">
+💬 Chat
+</button>
+
+<button
+class="social-btn zalo"
+onclick="openZalo()">
+📱 Zalo
+</button>
+
+</div>
+
+<div class="cards">
+
+<button
+class="social-btn ob53"
+onclick="openZalo()">
+--------OB54--------
+</button>
+
+<div class="card">
+<div class="badge new">NEW</div>
+<div class="icon">
+<img src="https://i.ibb.co/7J9wj54k/IMG-2133.png">
+</div>
+<h3>FF IPA</h3>
+<div class="desc">📁 Menu AimBot Esp Vv ; Esign [ 17 - 18.7.1 ]<br>⏳ 26/6/2026 | OB 54
+</div>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/mdmx4tyzu7mgryo/FFDarksword_1.5.2.ipa/file')">
+📥 Tải về
+</button>
+</div>
+
+<div class="card">
+<div class="badge new">NEW</div>
+<div class="icon">
+<img src="https://i.ibb.co/b5w7fZc0/IMG-0016.png">
+</div>
+<h3>Mod Ignis #1</h3>
+<div class="desc">📁 FFTH Mod Ignis<br>⏳ 26/6/2026 | OB 54
+</div>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/uqkcngcvwr0enta/FFTH+Mod+Ignis+Argen.zip/file')">
+📥 Tải về
+</button>
+</div>
+
+<button
+class="social-btn ob53"
+onclick="openZalo()">
+--------OB53--------
+</button>
+
+<div class="card">
+<div class="badge new">NEW</div>
+<div class="icon">
+<img src="https://i.ibb.co/7J9wj54k/IMG-2133.png">
+</div>
+<h3>FF IPA</h3>
+<div class="desc">📁 Menu AimBot Esp Vv ; Esign [ 17 - 18.7.1 ]<br>⏳ 16/6/2026 | OB 53
+</div>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/luuim9p3wjnn59l/FF_Menu_ro%25CC%259B%25CC%2580i.ipa/file')">
+📥 Tải về
+</button>
+</div>
+    
+<div class="card">
+<div class="badge new">NEW</div>
+<div class="icon">
+<img src="https://i.ibb.co/wNVSsjY0/IMG-0934.png">
+</div>
+<h3>FF External</h3>
+<div class="desc">📁 Menu AimBot Esp Vv ; TrollStore[ 12 - 16.7.15 ]<br>⏳ 14/6/2026 | OB 53
+</div>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/q99orfhsxeofct3/FFExternal.tipa/file')">
+📥 Tải về
+</button>
+</div>
+
+<div class="card">
+<div class="badge new">NEW</div>
+<div class="icon">
+<img src="https://i.ibb.co/tpP9GY4K/IMG-0860.jpg">
+</div>
+<h3>Mod M1887 V2</h3>
+<div class="desc">
+🔫 Mod M1887 phong xà ; VQC<br>⏳ 8/6/2026 | OB 53
+</div>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/cncxogxpuoxci8g/FFM_M1887_VQC.imazingapp/file')">
+📥 FFM imz
+</button>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/vse6y02ozfr59z0/FFM_%252B_FFTH_M1887_VQC_FILZA.zip/file')">
+📥 FFM + FFTH Filza
+</button>
+</div>
+
+<div class="card">
+<div class="badge new">NEW</div>
+<div class="icon">
+<img src="https://i.ibb.co/5X556bHr/IMG-0859.jpg">
+</div>
+<h3>Mod M1887 V1</h3>
+<div class="desc">
+🔫 Mod M1887 phong xà ; OPM<br>⏳ 8/6/2026 | OB 53
+</div>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/leshlntm8ytxuxi/FFM_M1887_OPM.imazingapp/file')">
+📥 FFM imz
+</button>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/meuy9w3kr12oc6m/FFM_%252B_FFTH_M1887_OPM_FILZA.zip/file')">
+📥 FFM + FFTH Filza
+</button>
+</div>
+
+<div class="card">
+<div class="badge new">NEW</div>
+<div class="icon">
+<img src="https://i.ibb.co/F4KFGczn/IMG-3998.png">
+</div>
+<h3>Holo imz</h3>
+<div class="desc">
+🔫 Định vị súng màu hồng ; FFTH<br>⏳ 7/6/2026 | OB 53
+</div>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/85ixn6bfw9b1ydg/FFTH+Đvi+Hồng.imazingapp/file')">
+📥 Tải về
+</button>
+</div>
+
+<div class="card">
+<div class="badge new">NEW</div>
+<div class="icon">
+<img src="https://i.ibb.co/506GWPb/IMG-3994.png">
+</div>
+<h3>Holo Filza</h3>
+<div class="desc">
+🔫 Định vị súng màu xanh ; FFTH<br>⏳ 7/6/2026 | OB 53
+</div>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/2a93mwj6go4iea3/FFTH+Đvi+súng+xanh.zip/file')">
+📥 Tải về
+</button>
+</div>
+
+<div class="card">
+<div class="badge new">NEW</div>
+<div class="icon">
+<img src="https://i.ibb.co/7x51H6h9/IMG-0846.png">
+</div>
+<h3>FFTH AimR8</h3>
+<div class="desc">
+📁 HeadShot đỉnh ; Filza<br>⏳ 7/6/2026 | OB 53
+</div>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/fu6085at60vauow/cache_res.CfnFf59sr1SbsqQ6JqTKsEusjKs%257E3D/file')">
+📥 Tải về
+</button>
+</div>
+
+<div class="card">
+<div class="badge new">NEW</div>
+<div class="icon">
+<img src="https://i.ibb.co/7tnmKXjN/IMG-0845.png">
+</div>
+<h3>FFTH AimMagic</h3>
+<div class="desc">
+📁 Vùng aim rộng 300% ; Filza<br>⏳ 7/6/2026 | OB 53
+</div>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/0g3x7c2hyby6q99/cache_res.CfnFf59sr1SbsqQ6JqTKsEusjKs%257E3D/file')">
+📥 Tải về
+</button>
+</div>
+
+<div class="card">
+<div class="badge new">NEW</div>
+<div class="icon">
+<img src="https://i.ibb.co/nsqJfyTR/IMG-0842.png">
+</div>
+<h3>FFM Nhẹ Tâm</h3>
+<div class="desc">
+📁 Hỗ trợ kéo tâm ; imz<br>⏳ 7/6/2026 | OB 53
+</div>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/yvwwsqjjnom35x9/FFM_Nhe%25CC%25A3_Ta%25CC%2582m.imazingapp/file')">
+📥 Tải về
+</button>
+</div>
+
+<div class="card">
+<div class="badge new">NEW</div>
+<div class="icon">
+<img src="https://i.ibb.co/5g1Qx07G/IMG-0844.png">
+</div>
+<h3>FFTH AimBody</h3>
+<div class="desc">
+📁 HeadShot Full ; Filza<br>⏳ 7/6/2026 | OB 53
+</div>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/95tcz9z3kr2zivv/cache_res.CfnFf59sr1SbsqQ6JqTKsEusjKs%257E3D/file')">
+📥 Tải về
+</button>
+</div>
+
+<div class="card">
+<div class="badge hot">HOT</div>
+<div class="icon">
+<img src="https://i.ibb.co/DgL8WGwk/IMG-0834.jpg" alt="IMG 0834" border="0">
+</div>
+<h3>Mod M1887 + MP40</h3>
+<div class="desc">
+📁 Mod skin súng lv7 ; FFTH<br>⏳ 7/6/2026 | OB 53
+</div>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/nkfuzzi2ot51wvc/FFTH_Mod_M1887_LV7_%252B_MP40_LV7.zip/file')">
+📥 Tải về
+</button>
+</div>
+
+<div class="card">
+<div class="badge new">NEW</div>
+<div class="icon">
+<img src="https://i.ibb.co/YB0ZZ0Qj/IMG-0836.png">
+</div>
+<h3>Mod Alock_1</h3>
+<div class="desc">
+📁 Mod Alock V2 ; FFTH<br>⏳ 7/6/2026 | OB 53
+</div>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/j92u6en9dowh4dv/FFTH_Mod_A%25CC%2581o_Nagi.zip/file')">
+📥 Tải về
+</button>
+</div>
+
+<div class="card">
+<div class="badge new">NEW</div>
+<div class="icon">
+<img src="https://i.ibb.co/5gV79RsJ/IMG-0835.png">
+</div>
+<h3>Mod Ignis_1</h3>
+<div class="desc">
+📁 Mod nhân vật Ignis ; FFTH<br>⏳ 7/6/2026 | OB 53
+</div>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/ho88dvhbzeey1r2/FFTH_Mod_Ignis_Long_tra%25CC%2589o_thu%25CC%2589.zip/file')">
+📥 Tải về
+</button>
+</div>
+
+<div class="card">
+<div class="badge new">NEW</div>
+<div class="icon">
+<img src="https://i.ibb.co/wF1SvxHP/IMG-0837.png">
+</div>
+<h3>Mod M590</h3>
+<div class="desc">
+🔫 Mod M590 phong xà ; FFTH<br>⏳ 7/6/2026 | OB 53
+</div>
+<button class="btn"
+onclick="downloadFile('https://www.mediafire.com/file/vjj8ux0sc0c18ih/FFTH_Mod_M590_Khu%25CC%2589ng_Long.zip/file')">
+📥 Tải về
+</button>
+</div>
+
+<div class="footer">
+© 2026 NQK FILE FREE - All Rights Reserved
+</div>
+
+<script>
+
+function downloadFile(url){
+    window.location.href = url;
+}
+
+document
+.getElementById("search")
+.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document
+    .querySelectorAll(".card")
+    .forEach(card => {
+
+        let text = card.innerText.toLowerCase();
+
+        card.style.display =
+        text.includes(value)
+        ? ""
+        : "none";
+
+    });
+
+});
+function openDiscord(){
+
+const btn =
+event.currentTarget;
+
+btn.style.transform =
+"scale(.85)";
+
+setTimeout(()=>{
+window.open(
+"https://discord.gg/m4xjNK93u",
+"_blank"
+);
+btn.style.transform="";
+},200);
+
+}
+
+function openZalo(){
+
+const btn =
+event.currentTarget;
+
+btn.style.transform =
+"scale(.85)";
+
+setTimeout(()=>{
+window.open(
+"https://zalo.me/0911398550",
+"_blank"
+);
+btn.style.transform="";
+},200);
+
+}
+</script>
+
+</body>
+</html>
